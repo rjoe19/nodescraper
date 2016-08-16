@@ -1,0 +1,26 @@
+{
+  "name": "nodescraper",
+  "version": "1.0.0",
+  "description": "simple node scraper - gives data from IMDB website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjoe19/nodescraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjoe19/nodescraper/issues"
+  },
+  "homepage": "https://github.com/rjoe19/nodescraper#readme",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "express": "^4.14.0",
+    "request": "^2.74.0"
+  }
+}
