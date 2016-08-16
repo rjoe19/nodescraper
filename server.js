@@ -17,6 +17,8 @@ app.get('/scrape', function(req, res){
 
     request(url, function(error, response, html){
 
+
+
         // First we'll check to make sure no errors occurred when making the request
 
         if(!error){
@@ -28,6 +30,46 @@ app.get('/scrape', function(req, res){
 
             var title, release, rating;
             var json = { title : "", release : "", rating : ""};
+
+            // We'll use the unique header class as a starting point.
+
+            $('.header').filter(function(){
+
+           // Let's store the data we filter into a variable so we can easily see what's going on.
+
+                var data = $(this);
+
+           // In examining the DOM we notice that the title rests within the first child element of the header tag.
+           // Utilizing jQuery we can easily navigate and get the text by writing the following code:
+
+                title = data.children().first().text();
+
+                // We will repeat the same process as above.  This time we notice that the release is located within the last element.
+               // Writing this code will move us to the exact location of the release year.
+
+               release = data.children().last().children().text();
+
+               // Once we have our title, we'll store it to the our json object.
+
+                json.title = title;
+
+                // Once again, once we have the data extract it we'll save it to our json object
+
+                json.release = release;
+            })
+
+            // Since the rating is in a different section of the DOM, we'll have to write a new jQuery filter to extract this information.
+
+            $('.star-box-giga-star').filter(function(){
+                var data = $(this);
+
+                // The .star-box-giga-star class was exactly where we wanted it to be.
+                // To get the rating, we can simply just get the .text(), no need to traverse the DOM any further
+
+                rating = data.text();
+
+                json.rating = rating;
+            })
         }
     })
 })
