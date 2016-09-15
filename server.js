@@ -7,7 +7,7 @@ var app     = express();
 
 app.get('/scrape', function(req, res){
   // Let's scrape Anchorman 2
-  url = 'http://www.imdb.com/title/tt1386697';
+  url = 'http://www.imdb.com/title/tt3774114/';
 
   request(url, function(error, response, html){
     if(!error){
